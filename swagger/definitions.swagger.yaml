@@ -1,0 +1,128 @@
+TransactionSummaries:
+    type: array
+    items:
+        $ref: '#/TransactionSummary'
+
+Transaction:
+    type: object
+    required: [
+        "transactionId",
+        "cardUid",
+        "createdDateTime",
+        "transactionType",
+        "transactionStatus",
+        "transactionStatusDescription",
+        "transactionAmount",
+        "transactionCurrencyCode",
+        "transactionTypeDescription",
+        "captureDateTime"
+    ]
+    properties:
+        transactionId:
+            type: string
+        cardUid:
+            type: string
+        merchantCity:
+            type: string
+        merchantName:
+            type: string
+        terminalIdCode:
+            type: string
+        createdDateTime:
+            type: string
+            format: date-time
+        captureDateTime:
+            type: string
+            format: date-time
+        terminalCountry:
+            type: string
+        transactionStatus:
+            type: integer
+        transactionStatusDescription:
+            type: string
+        transactionType:
+            type: string
+        transactionCurrencyCode:
+            type: string
+        transactionPOSCurrencyCode:
+            type: string
+        transactionAmount:
+            type: string
+        transactionPOSAmount:
+            type: string
+        cardAcceptorIdCode:
+            type: string
+        acquiringInstitutionIdCode:
+            type: string
+        merchantStateOrCountryCode:
+            type: string
+        transactionTypeDescription:
+            type: string
+        decisionCode:
+            type: string
+        decisionDescription:
+            type: string
+        transactionReference:
+            type: string
+        organisationUid:
+            type: string
+        placeUid:
+            type: string
+
+TransactionSummary:
+    type: object
+    required: [
+        "accountUid",
+        "lastUpdatedDateTime",
+        "transactionCurrencyCode",
+        "amount",
+        "transactionStatus",
+        "transactionStatusDescription",
+        "transactionType",
+        "transactionId",
+        "cardUid",
+        "createdDateTime",
+        "captureDateTime"
+    ]
+    properties:
+        accountUid:
+            type: string
+        lastUpdatedDateTime:
+            type: string
+            format: date-time
+        transactionCurrencyCode:
+            type: string
+        transactionPOSCurrencyCode:
+            type: string
+        amount:
+            type: string
+        transactionPOSAmount:
+            type: string
+        transactionStatus:
+            type: integer
+        transactionStatusDescription:
+            type: string
+        transactionType:
+            type: string
+        merchantName:
+            type: string
+        transactionId:
+            type: string
+        cardUid:
+            type: string
+        createdDateTime:
+            type: string
+            format: date-time
+        captureDateTime:
+            type: string
+            format: date-time
+        decisionCode:
+            type: string
+        decisionDescription:
+            type: string
+        transactionReference:
+            type: string
+        organisationUid:
+            type: string
+        placeUid:
+            type: string

@@ -1,0 +1,58 @@
+swagger: '2.0'
+info:
+    version: '1'
+    title: expend-accounts-api
+basePath: /
+schemes:
+    - http
+consumes:
+    - application/json
+produces:
+    - application/json
+
+paths:
+    /accounts/{account_uid}/transactions:
+        get:
+          tags:
+            - Accounts
+          operationId: listTransactions
+          parameters:
+            - name: account_uid
+              in: path
+              description: Account to list transactions from
+              required: true
+              type: string
+          responses:
+            '200':
+              description: Transaction summaries
+              schema:
+                $ref: './definitions.swagger.yaml#/TransactionSummaries'
+            '401':
+              description: Device not permitted to access requested account.
+            '404':
+              description: account_uid not found.
+    /accounts/{account_uid}/transactions/{transaction_id}:
+        get:
+          tags:
+            - Accounts
+          operationId: showTransaction
+          parameters:
+            - name: account_uid
+              in: path
+              description: Account to show transaction from
+              required: true
+              type: string
+            - name: transaction_id
+              in: path
+              description: Transaction to retrieve
+              required: true
+              type: string
+          responses:
+            '200':
+              description: Transaction details
+              schema:
+                $ref: './definitions.swagger.yaml#/Transaction'
+            '401':
+              description: Device not permitted to access requested account.
+            '404':
+              description: Account_uid not found, or transaction not for account.

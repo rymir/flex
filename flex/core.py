@@ -77,26 +77,31 @@ def load_source(source):
     )
 
 
-def parse(raw_schema):
+def parse(raw_schema, base_path):
     context = {
         'deferred_references': set(),
     }
-    swagger_definitions = definitions_validator(raw_schema, context=context)
+    swagger_definitions = definitions_validator(
+        raw_schema,
+        context=context,
+        base_path=base_path,
+    )
 
     swagger_schema = swagger_schema_validator(
         raw_schema,
         context=swagger_definitions,
+        base_path=base_path,
     )
     return swagger_schema
 
 
-def load(target):
+def load(target, base_path):
     """
     Given one of the supported target formats, load a swagger schema into it's
     python representation.
     """
     raw_schema = load_source(target)
-    return parse(raw_schema)
+    return parse(raw_schema, base_path=base_path)
 
 
 def validate(raw_schema, target=None, **kwargs):
